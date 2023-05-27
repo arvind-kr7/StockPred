@@ -1,0 +1,21 @@
+{% include 'base.html' %}
+
+
+
+{% block body %}
+
+{%if error %}
+
+    {{error}}
+
+{% endif %}
+
+
+<form action="/" method="POST" onsubmit="loader()">
+
+    <input type="text" name="company" placeholder="Enter Company Symbol, i.e, AAPL" />
+    <button type="submit">Predict</button>
+</form>
+
+
+{% endblock %}
