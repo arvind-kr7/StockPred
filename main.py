@@ -31,15 +31,16 @@ def index():
       company = request.values.get('company')
       backend = Backend(company)
       res = backend.predict()
+      print(f'{res=}')
       if res:
         context={'result_src':f'static/prediction_{company}.png', 'company':company}
-        return render_template('result.html', **context)
+      #   return render_template('result.html', **context)
       
       else:
         context['error']=f'invalid kerword: {company}'
       
-   else:
-      return render_template('index.html', **context)
+   
+   return render_template('base.html', **context)
 
 
 
