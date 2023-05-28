@@ -128,7 +128,7 @@ left: calc(50% - 1.25em);
 
         {% if result_src %}
 
-        <img src="{{result_src}}" class="img-fluid" alt="prediction result">
+        <img src="{{result_src}}" class="img-fluid rounded" alt="prediction result">
 
     
        {% endif %}
@@ -159,6 +159,7 @@ left: calc(50% - 1.25em);
             </div>
 
     </div>
+    
 
   </main>
 
@@ -166,7 +167,7 @@ left: calc(50% - 1.25em);
     <div class="container-fluid justify-content-around">
       <a class="navbar-brand" href="/">
 
-        <img src="static/icons8-stocks-48.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <img src="static/icons8-stocks-48.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-center">
         Stock Marekt Prediction
       </a>
       <form class="d-flex w-50" role="search" action="/" method="POST" onsubmit="loader()">

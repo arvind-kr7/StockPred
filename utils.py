@@ -25,7 +25,7 @@ class Backend:
         end = datetime.now()
         quote = self.company
         print(f'{end=}')
-        start = datetime(end.year-2,end.month,end.day)
+        start = datetime(end.year-3,end.month,end.day)
         print(f'{start=} , {end=}')
         
         try:
@@ -43,7 +43,7 @@ class Backend:
             # Convert the dataframe to a numpy array
             self.dataset = self.data.values
             # Get the number of rows to train the model on
-            self.training_data_len = int(np.ceil( len(self.dataset) * .95 ))
+            self.training_data_len = int(np.ceil( len(self.dataset) * .85 ))
 
             # training_data_len
 
@@ -145,13 +145,19 @@ class Backend:
         valid = self.data[self.training_data_len:]
         valid['Predictions'] = self.predictions
         # Visualize the data
-        plt.figure(figsize=(16,6))
+        plt.figure(figsize=(20,8))
+        ax = plt.axes()
+ 
+        # Setting the background color of the
+        # plot using set_facecolor() method
+        ax.set_facecolor("#212529")
         plt.title(f'Prediction for {self.company}')
-        plt.xlabel('Date', fontsize=18)
+        plt.xlabel('Date Timeline', fontsize=18)
         plt.ylabel('Close Price USD ($)', fontsize=18)
         plt.plot(train['Close'])
-        plt.plot(valid[['Close', 'Predictions']])
-        plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
+        plt.plot(valid[ 'Predictions'])
+        plt.legend(['Train', 'Predictions'], loc='lower right')
+        plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
         plt.savefig(f'static/prediction_{self.company}.png')
 
 
